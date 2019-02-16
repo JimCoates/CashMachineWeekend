@@ -5,6 +5,8 @@ import rocks.zipcode.atm.ActionResult;
 import java.util.HashMap;
 import java.util.Map;
 
+import static rocks.zipcode.atm.bank.AlertBox.*;
+
 /**
  * @author ZipCodeWilmington
  */
@@ -46,7 +48,9 @@ public class Bank {
         if (ok) {
             return ActionResult.success(account.getAccountData());
         } else {
+            AlertBox.display("Your account is overdrawn", "Please deposit additional funds or lower your withdrawl amount");
             return ActionResult.fail("Withdraw failed: " + amount + ". Account has: " + account.getBalance());
+
         }
     }
 }

@@ -1,5 +1,6 @@
 package rocks.zipcode.atm;
 
+import rocks.zipcode.atm.bank.AlertBox;
 import rocks.zipcode.atm.bank.Bank;
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -47,6 +48,8 @@ public class CashMachineApp extends Application {
             cashMachine.withdraw(amount);
 
             areaInfo.setText(cashMachine.toString());
+            //AlertBox.display("Your account is overdrawn", "Please deposit additional funds or lower your withdrawl amount");
+
         });
 
         Button btnExit = new Button("Exit");
