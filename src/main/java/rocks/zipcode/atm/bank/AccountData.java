@@ -35,10 +35,8 @@ public final class AccountData {
     }
 
     @Override
+
     public String toString() {
-        return "Account id: " + id + '\n' +
-                "Name: " + name + '\n' +
-                "Email: " + email + '\n' +
-                "Balance: " + balance;
+        return "Balance: " + balance;
     }
 }

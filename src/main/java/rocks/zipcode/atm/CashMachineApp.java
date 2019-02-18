@@ -2,27 +2,16 @@ package rocks.zipcode.atm;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
-import javafx.scene.layout.*;
-import rocks.zipcode.atm.bank.AccountData;
-import rocks.zipcode.atm.bank.AlertBox;
 import rocks.zipcode.atm.bank.Bank;
 import javafx.application.Application;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.application.Application;
 import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
+
 
 /**
  * @author ZipCodeWilmington
@@ -54,11 +43,13 @@ public class CashMachineApp extends Application {
 
             Label labelTitle = new Label("Login with your account number to begin");
 
-            // Put on cell (0,0), span 2 column, 1 row.
+
             root.add(labelTitle, 0, 0, 2, 1);
 
             Label labelUserName = new Label("Account Number");
             TextField fieldUserName = new TextField();
+
+            Label labelName = new Label("Name");
 
             Label labelWithdraw = new Label("Withdraw");
             TextField fieldwithdraw = new TextField();
@@ -76,7 +67,9 @@ public class CashMachineApp extends Application {
             Button btnWithdraw = new Button("Withdraw");
             btnWithdraw.setDisable(true);
 
+            Label labelEmail = new Label("User E-mail");
             TextField fieldEmail = new TextField();
+
             TextField fieldname = new TextField();
 
 
@@ -98,10 +91,12 @@ public class CashMachineApp extends Application {
                 btnWithdraw.setDisable(false);
 
                 areaInfo.setText(cashMachine.toString());
+                fieldname.setText(cashMachine.getName());
+                fieldEmail.setText(cashMachine.getEmail());
 
             });
 
-            //Button btnDeposit = new Button("Deposit");
+
             btnDeposit.setOnAction(e -> {
                 Double amount = Double.parseDouble(fielddeposit.getText());
                 cashMachine.deposit(amount);
@@ -109,13 +104,13 @@ public class CashMachineApp extends Application {
                 areaInfo.setText(cashMachine.toString());
             });
 
-            //Button btnWithdraw = new Button("Withdraw");
+
             btnWithdraw.setOnAction(e -> {
                 Double amount = Double.parseDouble(fieldwithdraw.getText());
                 cashMachine.withdraw(amount);
 
                 areaInfo.setText(cashMachine.toString());
-                //AlertBox.display("Your account is overdrawn", "Please deposit additional funds or lower your withdrawl amount");
+
 
             });
 
@@ -133,7 +128,7 @@ public class CashMachineApp extends Application {
 
             GridPane.setHalignment(labelUserName, HPos.RIGHT);
 
-            // Put on cell (0,1)
+
             root.add(labelUserName, 0, 1);
 
             root.add(labelWithdraw, 0,3);
@@ -141,6 +136,10 @@ public class CashMachineApp extends Application {
             root.add(labelDeposit,3,3);
 
             root.add(labelActivity, 0,7);
+
+            root.add(labelName, 0,13);
+
+            root.add(labelEmail, 3, 13);
 
 
             GridPane.setHalignment(fieldUserName, HPos.LEFT);
@@ -171,7 +170,14 @@ public class CashMachineApp extends Application {
             root.add(fieldwithdraw, 1, 3);
 
             GridPane.setHalignment(btnExit, HPos.LEFT);
-            root.add(btnExit, 1, 13);
+            root.add(btnExit, 1, 15);
+
+            GridPane.setHalignment(fieldname, HPos.LEFT);
+            root.add(fieldname, 1, 13);
+
+            GridPane.setHalignment(fieldEmail, HPos.LEFT);
+            root.add(fieldEmail, 4, 13);
+
 
 
 

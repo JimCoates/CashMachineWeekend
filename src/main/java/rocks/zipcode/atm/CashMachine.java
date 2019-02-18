@@ -53,12 +53,21 @@ public class CashMachine {
         }
     }
 
+    public String getName() {
+        return accountData.getName().toString();
+    }
+
+    public String getEmail() {
+        return accountData.getEmail().toString();
+    }
+
+
 
     @Override
     public String toString() {
         return accountData != null ? accountData.toString() : "Try account 1000 or 2000 and click submit.";
     }
-    
+
 
     private <T> void tryCall(Supplier<ActionResult<T> > action, Consumer<T> postAction) {
         try {
